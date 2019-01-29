@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {wordSource} from './words.min.js';
 
 export class Window extends React.Component {
@@ -12,7 +13,9 @@ export class Window extends React.Component {
                 </div>
 
                 <div className="window__body">
-                    <div className="phrase-display"></div>
+                    <div className="phrase-display">
+
+                    </div>
                 </div>
             </div>
         );
@@ -23,8 +26,8 @@ export function Controls() {
     return (
         <div className="controls">
             <CreateButton />
-            <CopyButton id="copy" img="copy" event="handleCopy" />
-            <InfoButton id="info" img="info" event="handleInfo" />
+            <CopyButton />
+            <InfoButton />
 		</div>
     );
 }
@@ -35,8 +38,8 @@ class CreateButton extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
-        Generate()
+    handleClick(e) {
+        // Phrases += generatePhrase();
     }
 
     render() {
@@ -74,7 +77,7 @@ class InfoButton extends React.Component {
     }
 
     handleClick() {
-        $('body').toggleClass('info');
+        $('body').addClass('info');
     }
 
     render() {
@@ -112,8 +115,8 @@ export class Settings extends React.Component {
     render() {
         return (
             <div className="settings">
-                <p>Number of words:</p>
                 <form className="settings__words">
+                    <p>Number of words:</p>
                     <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="two" value={2} defaultChecked={this.state.wordCount == 2 ? true : false} onChange={this.handleChange}></input>
                         <label htmlFor="two">2</label>
                     <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="three" value={3} defaultChecked={this.state.wordCount == 3 ? true : false} onChange={this.handleChange}></input>
@@ -141,12 +144,12 @@ export class Settings extends React.Component {
 
 
 
-function Generate() {
+function generatePhrase() {
     function pickRandomFromArray(theArray) {
         var a = theArray[Math.floor(Math.random() * theArray.length)];
         return a;
     };
-    // pickRandomFromArray(wordSource);
+    return pickRandomFromArray(wordSource);
 }
 
 function copy() {
