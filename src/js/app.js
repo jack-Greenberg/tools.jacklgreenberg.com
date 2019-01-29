@@ -100,16 +100,12 @@ export class Settings extends React.Component {
     }
 
     handleChange(e) {
-        let val;
         const target = e.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === 'checkbox' ? target.checked : parseInt(target.value);
         const name = target.name;
-        if (typeof(value) == "string") {
-            val = parseInt(value); // this just makes sure the state is an integer, like 3, and not a string, like "3"
-        }
 
         this.setState({
-            [name]: val
+            [name]: value
         }, () => {console.log(this.state)});
     }
 
