@@ -2,8 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {wordSource} from './words.min.js';
 
+let Phrases = [];
+
 export class Window extends React.Component {
     render() {
+        const phraseList = Phrases.map((phrase, index) => <p key={index}>{phrase}</p>);
+
         return (
             <div className="window">
                 <div className="window__nav">
@@ -14,13 +18,14 @@ export class Window extends React.Component {
 
                 <div className="window__body">
                     <div className="phrase-display">
-
+                        {phraseList}
                     </div>
                 </div>
             </div>
         );
     }
 }
+
 
 export function Controls() {
     return (
@@ -39,7 +44,9 @@ class CreateButton extends React.Component {
     }
 
     handleClick(e) {
-        // Phrases += generatePhrase();
+        Phrases.push(generatePhrase());
+        console.log(Phrases);
+        ReactDOM.render(<Window />, document.getElementById('app-display'));
     }
 
     render() {
@@ -58,7 +65,7 @@ class CopyButton extends React.Component {
     }
 
     handleClick() {
-        copy()
+        return
     }
 
     render() {
