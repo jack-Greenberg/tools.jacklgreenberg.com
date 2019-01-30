@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {wordSource} from './words.min.js';
+import {bank} from './words.min.js';
+const wordSource = bank.filter(word => word.length > 3 && word.length < 10);
 
 let Phrases = [];
 
@@ -26,8 +27,18 @@ export class Window extends React.Component {
     }
 }
 
+export class Input extends React.Component {
+    render() {
+        return (
+            <div>
+                <Controls />
+                <Settings />
+            </div>
+        )
+    }
+}
 
-export function Controls() {
+function Controls() {
     return (
         <div className="controls">
             <CreateButton />
@@ -45,7 +56,6 @@ class CreateButton extends React.Component {
 
     handleClick(e) {
         Phrases.push(generatePhrase());
-        console.log(Phrases);
         ReactDOM.render(<Window />, document.getElementById('app-display'));
     }
 
@@ -96,7 +106,7 @@ class InfoButton extends React.Component {
     }
 }
 
-export class Settings extends React.Component {
+class Settings extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -116,7 +126,7 @@ export class Settings extends React.Component {
 
         this.setState({
             [name]: value
-        }, () => {console.log(this.state)});
+        });
     }
 
     render() {
@@ -148,17 +158,40 @@ export class Settings extends React.Component {
     }
 }
 
-
-
-
-function generatePhrase() {
+function generatePhrase(settings) {
     function pickRandomFromArray(theArray) {
         var a = theArray[Math.floor(Math.random() * theArray.length)];
         return a;
     };
-    return pickRandomFromArray(wordSource);
+
+    let passPhrase = '';
+
+    for (let i = 0; i < 3; i++) {
+        let word = pickRandomFromArray(wordSource);
+        if (true) {
+            if (i == 0) {
+                word = word.charAt(0).toUpperCase() + word.slice(1);
+                passPhrase += word;
+            } else {
+                true ? passPhrase += " " + word : passPhrase += word;
+            }
+        }
+    }
+
+    if (false) {
+        passPhrase += Math.floor(Math.random() * 10);
+    }
+
+    if (false) {
+        passPhrase += pickRandomFromArray(['!','?','/',':',';','$','&','-','@','"'])
+    }
+
+    return passPhrase;
 }
 
-function copy() {
-    return
+const defaultSettings = {
+    wordCount: 3,
+    capital: false,
+    number: false,
+    spchr: false
 }
