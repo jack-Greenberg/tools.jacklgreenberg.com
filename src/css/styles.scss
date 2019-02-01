@@ -9,7 +9,7 @@ body {
     max-width: 35rem;
     height: 20rem;
     position: relative;
-    margin: 1rem 1rem 2.5rem 1rem;
+    padding: 1rem 1rem 2.5rem 1rem;
 
     &__nav {
         height: 1.3em;
@@ -89,7 +89,7 @@ body {
     &__words {
         text-align: center;
         font-family: $overpass;
-        color: #7d7d7d;
+        color: $light-gray;
 
         p {
             color: #ffffff;
@@ -143,4 +143,109 @@ body {
 
 .info-modal {
     display: none;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    margin-top: 6rem;
+
+    .info & {
+        display: block;
+    }
+
+    h2 {
+        font-family: $overpass;
+        font-size: 1.8rem;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    .quote-container {
+        position: relative;
+
+        blockquote {
+            font-family: $overpass;
+            color: $light-gray;
+            font-size: .9rem;
+            max-width: 30rem;
+            margin: 2rem 4rem 1rem 4rem;
+
+            b {
+                color: #ffffff;
+            }
+
+            a {
+                color: #ffffff;
+
+                &:visited {
+                    color: #ffffff;
+                }
+            }
+        }
+
+        cite {
+            font-family: $overpass;
+            color: $light-gray;
+            font-size: .9rem;
+            display: block;
+            position: absolute;
+            right: 0;
+            margin-right: 15%;
+
+            a {
+                text-decoration: none;
+
+                &:visited {
+                    color: $light-gray;
+                }
+            }
+        }
+    }
+
+    .credits {
+        margin-top: 5rem;
+        text-align: center;
+        font-family: $overpass;
+        color: $light-gray;
+        font-size: .8rem;
+
+        svg {
+            height: 1rem;
+            vertical-align: sub;
+        }
+
+        a {
+            color: #ffffff;
+        }
+    }
+
+    .info-close {
+        background-color: $beige;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        box-shadow: 0 4px #888581;
+        margin: 0 auto;
+
+        &:active {
+            box-shadow: none;
+        }
+
+        img {
+            width: 50%;
+        }
+    }
+}
+
+.modal-overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: $gray;
+    z-index: 99;
+    display: none;
+    transition: display 1s;
+
+    .info & {
+        display: block;
+    }
 }

@@ -21,3 +21,7 @@ $( document ).ready(function() {
 $(function() {
 	FastClick.attach(document.body);
 });
+
+$('.js-info-close').on('click', function() {
+    $('body').removeClass('info');
+});
