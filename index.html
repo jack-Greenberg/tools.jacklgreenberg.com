@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Passphrase Generator</title>
 
+    <script src="dist/clipboard.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="dist/index.css">
 </head>
@@ -13,5 +14,14 @@
     <div id="app-settings"></div>
 
     <script src="dist/bundle.js"></script>
+    <script>
+        $( document ).ready(function() {
+          let clipboard = new ClipboardJS('#copy');
+
+          clipboard.on('success', function(e) {
+                e.clearSelection();
+            });
+        });
+    </script>
 </body>
 </html>

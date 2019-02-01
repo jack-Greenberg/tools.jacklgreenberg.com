@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import {bank} from './words.min.js';
 const wordSource = bank.filter(word => word.length > 3 && word.length < 10);
 
-let Phrases = [];
+var Phrases = [];
+var index = 0;
 
 export class Window extends React.Component {
     render() {
@@ -18,7 +19,7 @@ export class Window extends React.Component {
                 </div>
 
                 <div className="window__body">
-                    <div className="phrase-display">
+                    <div className="phrase-display  js-phrase-display">
                         {phraseList}
                     </div>
                 </div>
@@ -54,7 +55,7 @@ export class Controls extends React.Component {
 
     handleClick(e) {
         Phrases.push(generatePhrase(this.state));
-        console.log(Phrases);
+        ReactDOM.render(<Window />, document.getElementById('app-display'));
     }
 
     render() {
@@ -122,7 +123,7 @@ class CopyButton extends React.Component {
 
     render() {
         return (
-            <button id="copy" className="controls__button" onClick={this.handleClick}>
+            <button id="copy" className="controls__button" onClick={this.handleClick} data-clipboard-target=".js-phrase-display:last-child">
                 <img src={"images/copy.svg"}></img>
             </button>
         )
