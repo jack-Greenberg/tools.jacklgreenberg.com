@@ -2,9 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta content="initial-scale=1.0,width=device-width" name="viewport">
     <title>Passphrase Generator</title>
 
     <script src="dist/clipboard.min.js"></script>
+    <script type='application/javascript' src='dist/fastclick.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="dist/index.css">
     <link href="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
@@ -12,7 +14,22 @@
 <body>
     <div id="app-display"></div>
     <div id="app-controls"></div>
-    <div id="app-settings"></div>
+
+    <div class="info-modal">
+        <h2>Why passphrase?</h2>
+        <blockquote>
+            "Because humans are terrible at creating secure passwords. The <a href="https://xkcd.com/936/">famous xkcd comic</a> got it right: humans have been trained to use <b>hard-to-remember</b> passwords that are <b>easy</b> for computers to guess."
+        </blockquote>
+        <cite><a href="https://www.useapassphrase.com/">www.useapassphrase.com</a></cite>
+
+        <p class="credits">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+             with
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              by <a href="https://jacklgreenberg.com">Jack Greenberg</a></p>
+
+        <button class="js-info-close"></button>
+    </div>
 
     <script src="dist/bundle.js"></script>
 </body>

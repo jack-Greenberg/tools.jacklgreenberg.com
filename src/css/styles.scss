@@ -1,2 +1,90 @@
 @import 'component';
 @import 'reset';
+
+body {
+    background-color: $gray;
+}
+
+.display-window {
+    max-width: 35rem;
+    height: 20rem;
+    position: relative;
+    margin: 1rem 1rem 2.5rem 1rem;
+
+    &__nav {
+        height: 1.3em;
+        padding-left: .4rem;
+        background-color: $beige;
+        border-radius: .5rem .5rem 0 0;
+
+        .circle {
+            margin-left: .4rem;
+            width: .8rem;
+            vertical-align: middle;
+        }
+    }
+
+    &__body {
+        height: calc(100% - 1.3em);
+        background-color: $dark-gray;
+        border-radius: 0 0 .5rem .5rem;
+        position: relative;
+        padding: .5rem;
+        overflow-y: hidden;
+
+        .phrase-display {
+            position: absolute;
+            bottom: .5rem;
+
+            p {
+                font-family: $overpass;
+                color: #ffffff;
+                font-size: .8rem;
+                vertical-align: bottom;
+
+                &::before {
+                    content: '> ';
+                }
+            }
+        }
+    }
+}
+
+.buttons {
+    text-align: center;
+
+    button {
+        background-color: $beige;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        box-shadow: 0 4px #888581;
+        margin: 0 .75rem;
+
+        &:active {
+            box-shadow: none;
+        }
+
+        img {
+            width: 50%;
+        }
+    }
+}
+
+.copy-text {
+    font-family: $overpass;
+    font-size: .8rem;
+    margin-top: 1rem;
+    color: #ffffff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .2s;
+
+    &.copied {
+        opacity: 1;
+    }
+}
+
+.settings {
+
+}

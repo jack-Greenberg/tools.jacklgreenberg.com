@@ -11,14 +11,14 @@ export class Window extends React.Component {
         const phraseList = Phrases.map((phrase, index) => <p key={index}>{phrase}</p>);
 
         return (
-            <div className="window">
-                <div className="window__nav">
-                    <span className="circle  circle--red"></span>
-                    <span className="circle  circle--yellow"></span>
-                    <span className="circle  circle--green"></span>
+            <div className="display-window">
+                <div className="display-window__nav">
+                    <svg className="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#d75745"></circle></svg>
+                    <svg className="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#f6d063"></circle></svg>
+                    <svg className="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#63c78e"></circle></svg>
                 </div>
 
-                <div className="window__body">
+                <div className="display-window__body">
                     <div className="phrase-display  js-phrase-display">
                         {phraseList}
                     </div>
@@ -51,6 +51,11 @@ export class Controls extends React.Component {
             [name]: value
         });
 
+    };
+
+    componentDidMount() {
+        Phrases.push(generatePhrase(this.state));
+        ReactDOM.render(<Window />, document.getElementById('app-display'));
     }
 
     handleClick(e) {
@@ -61,9 +66,12 @@ export class Controls extends React.Component {
     render() {
         return (
             <div>
-                <CreateButton settings={this.state.settings} handleClick={this.handleClick} />
-                <CopyButton />
-                <InfoButton />
+                <div className="buttons">
+                    <CreateButton settings={this.state.settings} handleClick={this.handleClick} />
+                    <CopyButton />
+                    <InfoButton />
+                </div>
+                <div className="copy-text js-copy-text">Copied!</div>
                 <div className="settings">
                     <form className="settings__words">
                         <p>Number of words:</p>
@@ -104,7 +112,7 @@ class CreateButton extends React.Component {
 
     render() {
         return (
-            <button id="create" className="controls__button" onClick={this.handleClick}>
+            <button id="create" onClick={this.handleClick}>
                 <img src={"images/plus.svg"}></img>
             </button>
         )
@@ -112,18 +120,9 @@ class CreateButton extends React.Component {
 };
 
 class CopyButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        return
-    }
-
     render() {
         return (
-            <button id="copy" className="controls__button" onClick={this.handleClick} data-clipboard-target=".js-phrase-display p:last-child">
+            <button id="copy" data-clipboard-target=".js-phrase-display p:last-child" className="js-copy">
                 <img src={"images/copy.svg"}></img>
             </button>
         )
@@ -142,7 +141,7 @@ class InfoButton extends React.Component {
 
     render() {
         return (
-            <button id="info" className="controls__button" onClick={this.handleClick}>
+            <button id="info" onClick={this.handleClick}>
                 <img src={"images/info.svg"}></img>
             </button>
         )
