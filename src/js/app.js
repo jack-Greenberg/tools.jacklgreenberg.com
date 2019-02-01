@@ -25,28 +25,71 @@ export class Window extends React.Component {
             </div>
         );
     }
-}
+};
 
-export class Input extends React.Component {
+export class Controls extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            wordCount: 3,
+            number: false,
+            spchr: false,
+            spaces: true,
+            capital: false
+        }
+    }
+
+    handleChange(e) {
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : parseInt(target.value);
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+
+    }
+
+    handleClick(e) {
+        Phrases.push(generatePhrase(this.state));
+        console.log(Phrases);
+    }
+
     render() {
         return (
             <div>
-                <Controls />
-                <Settings />
+                <CreateButton settings={this.state.settings} handleClick={this.handleClick} />
+                <CopyButton />
+                <InfoButton />
+                <div className="settings">
+                    <form className="settings__words">
+                        <p>Number of words:</p>
+                        <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="two" value={2} defaultChecked={this.state.wordCount == 2 ? true : false} onChange={this.handleChange}></input>
+                            <label htmlFor="two">2</label>
+                        <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="three" value={3} defaultChecked={this.state.wordCount == 3 ? true : false} onChange={this.handleChange}></input>
+                            <label htmlFor="three">3</label>
+                        <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="four" value={4} defaultChecked={this.state.wordCount == 4 ? true : false} onChange={this.handleChange}></input>
+                            <label htmlFor="four">4</label>
+                        <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="five" value={5} defaultChecked={this.state.wordCount == 5 ? true : false} onChange={this.handleChange}></input>
+                            <label htmlFor="five">5</label>
+                    </form>
+                    <form className="settings__includes">
+                        <input type="checkbox" className="js-settings__option  settings__option--check" id="number" name="number" defaultChecked={this.state.number} onChange={this.handleChange}></input>
+                            <label htmlFor="number">incl. number</label>
+                        <input type="checkbox" className="js-settings__option  settings__option--check" id="spchr" name="spchr" defaultChecked={this.state.spchr} onChange={this.handleChange}></input>
+                            <label htmlFor="spchr">incl. sp. character</label>
+                        <input type="checkbox" className="js-settings__option  settings__option--check" id="spaces" name="spaces" defaultChecked={this.state.spaces} onChange={this.handleChange}></input>
+                            <label htmlFor="spaces">incl. spaces</label>
+                        <input type="checkbox" className="js-settings__option  settings__option--check" id="capital" name="capital" defaultChecked={this.state.capital} onChange={this.handleChange}></input>
+                            <label htmlFor="capital">incl. capital</label>
+                    </form>
+                </div>
             </div>
         )
     }
-}
-
-function Controls() {
-    return (
-        <div className="controls">
-            <CreateButton />
-            <CopyButton />
-            <InfoButton />
-		</div>
-    );
-}
+};
 
 class CreateButton extends React.Component {
     constructor(props) {
@@ -55,8 +98,7 @@ class CreateButton extends React.Component {
     }
 
     handleClick(e) {
-        Phrases.push(generatePhrase());
-        ReactDOM.render(<Window />, document.getElementById('app-display'));
+        this.props.handleClick(e.target.value);
     }
 
     render() {
@@ -66,7 +108,7 @@ class CreateButton extends React.Component {
             </button>
         )
     }
-}
+};
 
 class CopyButton extends React.Component {
     constructor(props) {
@@ -85,7 +127,7 @@ class CopyButton extends React.Component {
             </button>
         )
     }
-}
+};
 
 class InfoButton extends React.Component {
     constructor(props) {
@@ -104,59 +146,7 @@ class InfoButton extends React.Component {
             </button>
         )
     }
-}
-
-class Settings extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.state = {
-            wordCount: 3,
-            number: false,
-            spchr: false,
-            spaces: true,
-            capital: false
-        };
-    }
-
-    handleChange(e) {
-        const target = e.target;
-        const value = target.type === 'checkbox' ? target.checked : parseInt(target.value);
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
-    }
-
-    render() {
-        return (
-            <div className="settings">
-                <form className="settings__words">
-                    <p>Number of words:</p>
-                    <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="two" value={2} defaultChecked={this.state.wordCount == 2 ? true : false} onChange={this.handleChange}></input>
-                        <label htmlFor="two">2</label>
-                    <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="three" value={3} defaultChecked={this.state.wordCount == 3 ? true : false} onChange={this.handleChange}></input>
-                        <label htmlFor="three">3</label>
-                    <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="four" value={4} defaultChecked={this.state.wordCount == 4 ? true : false} onChange={this.handleChange}></input>
-                        <label htmlFor="four">4</label>
-                    <input type="radio" name="wordCount" className="js-settings__option  settings__option--number" id="five" value={5} defaultChecked={this.state.wordCount == 5 ? true : false} onChange={this.handleChange}></input>
-                        <label htmlFor="five">5</label>
-                </form>
-                <form className="settings__includes">
-                    <input type="checkbox" className="js-settings__option  settings__option--check" id="number" name="number" defaultChecked={this.state.number} onChange={this.handleChange}></input>
-                        <label htmlFor="number">incl. number</label>
-                    <input type="checkbox" className="js-settings__option  settings__option--check" id="spchr" name="spchr" defaultChecked={this.state.spchr} onChange={this.handleChange}></input>
-                        <label htmlFor="spchr">incl. sp. character</label>
-                    <input type="checkbox" className="js-settings__option  settings__option--check" id="spaces" name="spaces" defaultChecked={this.state.spaces} onChange={this.handleChange}></input>
-                        <label htmlFor="spaces">incl. spaces</label>
-                    <input type="checkbox" className="js-settings__option  settings__option--check" id="capital" name="capital" defaultChecked={this.state.capital} onChange={this.handleChange}></input>
-                        <label htmlFor="capital">incl. capital</label>
-                </form>
-            </div>
-        )
-    }
-}
+};
 
 function generatePhrase(settings) {
     function pickRandomFromArray(theArray) {
@@ -166,32 +156,31 @@ function generatePhrase(settings) {
 
     let passPhrase = '';
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < settings.wordCount; i++) {
         let word = pickRandomFromArray(wordSource);
-        if (true) {
+
+        if (settings.capital) {
             if (i == 0) {
                 word = word.charAt(0).toUpperCase() + word.slice(1);
-                passPhrase += word;
-            } else {
-                true ? passPhrase += " " + word : passPhrase += word;
-            }
-        }
+            };
+        };
+
+        if (settings.spaces) {
+            if (i != (settings.wordCount - 1)) {
+                word += " ";
+            };
+        };
+
+        passPhrase += word
     }
 
-    if (false) {
-        passPhrase += Math.floor(Math.random() * 10);
+    if (settings.number) {
+        passPhrase += Math.floor(Math.random() * 10); // number
     }
 
-    if (false) {
-        passPhrase += pickRandomFromArray(['!','?','/',':',';','$','&','-','@','"'])
+    if (settings.spchr) {
+        passPhrase += pickRandomFromArray(['!','?','/',':',';','$','&','-','@','"']); // spchr
     }
 
     return passPhrase;
-}
-
-const defaultSettings = {
-    wordCount: 3,
-    capital: false,
-    number: false,
-    spchr: false
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../css/styles.scss';
-import { Window, Input } from './app.js';
+import { Window, Controls } from './app.js';
 
 ReactDOM.render(<Window />, document.getElementById('app-display'));
-ReactDOM.render(<Input />, document.getElementById('app-controls'));
+ReactDOM.render(<Controls />, document.getElementById('app-controls'));
