@@ -50,10 +50,14 @@ export class Controls extends React.Component {
         this.setState({
             [name]: value
         });
-
     };
 
     componentDidMount() {
+        Phrases.push(generatePhrase(this.state));
+        ReactDOM.render(<Window />, document.getElementById('app-display'));
+    }
+
+    componentDidUpdate() {
         Phrases.push(generatePhrase(this.state));
         ReactDOM.render(<Window />, document.getElementById('app-display'));
     }
@@ -86,11 +90,11 @@ export class Controls extends React.Component {
                     </form>
                     <form className="settings__includes">
                         <input type="checkbox" className="js-settings__option  settings__option--check" id="number" name="number" defaultChecked={this.state.number} onChange={this.handleChange}></input>
-                            <label htmlFor="number">incl. number</label>
+                            <label htmlFor="number">incl. number</label><br></br>
                         <input type="checkbox" className="js-settings__option  settings__option--check" id="spchr" name="spchr" defaultChecked={this.state.spchr} onChange={this.handleChange}></input>
-                            <label htmlFor="spchr">incl. sp. character</label>
+                            <label htmlFor="spchr">incl. sp. character</label><br></br>
                         <input type="checkbox" className="js-settings__option  settings__option--check" id="spaces" name="spaces" defaultChecked={this.state.spaces} onChange={this.handleChange}></input>
-                            <label htmlFor="spaces">incl. spaces</label>
+                            <label htmlFor="spaces">incl. spaces</label><br></br>
                         <input type="checkbox" className="js-settings__option  settings__option--check" id="capital" name="capital" defaultChecked={this.state.capital} onChange={this.handleChange}></input>
                             <label htmlFor="capital">incl. capital</label>
                     </form>

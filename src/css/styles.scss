@@ -86,5 +86,61 @@ body {
 }
 
 .settings {
+    &__words {
+        text-align: center;
+        font-family: $overpass;
+        color: #7d7d7d;
 
+        p {
+            color: #ffffff;
+        }
+
+        input[type="radio"] {
+            display:none;
+
+            &:checked + label {
+                color: #ffffff;
+                font-weight: 700;
+            }
+
+            label {
+                cursor: pointer;
+            }
+        }
+
+        label {
+            padding: 0 .25rem;
+        }
+    }
+
+    &__includes {
+        margin: 1rem 0 0 30%;
+
+        input {
+            vertical-align: text-bottom;
+            -webkit-appearance: none;
+            width: .7rem;
+            height: .7rem;
+            border: 1px solid #ffffff;
+
+            &:checked {
+                background-color: #ffffff;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        label {
+            font-family: $overpass;
+            color: #ffffff;
+            font-size: .8rem;
+            margin-left: .2rem;
+        }
+    }
+}
+
+.info-modal {
+    display: none;
 }
