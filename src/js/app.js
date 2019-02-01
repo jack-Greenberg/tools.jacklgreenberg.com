@@ -123,7 +123,7 @@ class CopyButton extends React.Component {
 
     render() {
         return (
-            <button id="copy" className="controls__button" onClick={this.handleClick} data-clipboard-target=".js-phrase-display:last-child">
+            <button id="copy" className="controls__button" onClick={this.handleClick} data-clipboard-target=".js-phrase-display p:last-child">
                 <img src={"images/copy.svg"}></img>
             </button>
         )
