@@ -11,28 +11,29 @@
     <link rel="stylesheet" href="dist/index.css">
     <link href="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
 </head>
-<body>
-    <div class="modal-overlay"></div>
+<body class="info">
     <div id="app-display"></div>
     <div id="app-controls"></div>
 
-    <div class="info-modal">
-        <h2>Why passphrase?</h2>
-        <div class="quote-container">
-            <blockquote>
-                "Because humans are terrible at creating secure passwords. The <a href="https://xkcd.com/936/">famous xkcd comic</a> got it right: humans have been trained to use <b>hard-to-remember</b> passwords that are <b>easy</b> for computers to guess."
-            </blockquote>
-            <cite><a href="https://www.useapassphrase.com/">www.useapassphrase.com</a></cite>
-        </div>
-        <p class="credits">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-            with
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            by <a href="https://jacklgreenberg.com">Jack&nbsp;Greenberg</a>.</p>
+    <div class="modal-container">
+        <div class="info-modal">
+            <h2>Why passphrase?</h2>
+            <div class="quote-container">
+                <blockquote>
+                    "Because humans are terrible at creating secure passwords. The <a href="https://xkcd.com/936/">famous xkcd comic</a> got it right: humans have been trained to use <b>hard-to-remember</b> passwords that are <b>easy</b> for computers to guess."
+                </blockquote>
+                <cite><a href="https://www.useapassphrase.com/">www.useapassphrase.com</a></cite>
+            </div>
+            <p class="credits">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                with
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                by <a href="https://jacklgreenberg.com">Jack&nbsp;Greenberg</a>.</p>
 
-        <button class="info-close js-info-close">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
+            <button class="info-close js-info-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
     </div>
 
     <script src="dist/bundle.js"></script>

@@ -165,20 +165,29 @@ body {
     }
 }
 
-.info-modal {
-    display: none;
+.modal-container {
     position: absolute;
-    z-index: 999;
     top: 0;
-    margin-top: 6rem;
-    font-size: 1rem;
-
-    @media only screen and (min-width: $medium) {
-        font-size: 1.2rem;
-    }
+    display: none;
+    background-color: $gray;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
 
     .info & {
         display: block;
+    }
+
+
+}
+
+.info-modal {
+    margin-top: 6rem;
+    font-size: 1rem;
+    text-align: center;
+
+    @media only screen and (min-width: $medium) {
+        font-size: 1.2rem;
     }
 
     h2 {
@@ -193,10 +202,12 @@ body {
 
         blockquote {
             font-family: $overpass;
+            text-align: left;
             color: $light-gray;
             font-size: .9em;
-            max-width: 30em;
-            margin: 2em 4em 1em 4em;
+            max-width: 28em;
+            padding: 2em 2em 1em;
+            margin: 0 auto;
 
             b {
                 color: #ffffff;
@@ -215,10 +226,9 @@ body {
             font-family: $overpass;
             color: $light-gray;
             font-size: .9em;
-            display: block;
-            position: absolute;
-            right: 0;
-            margin-right: 15%;
+            text-align: right;
+            display: inline-block;
+            margin-right: -9rem;
 
             a {
                 text-decoration: none;
@@ -267,16 +277,16 @@ body {
     }
 }
 
-.modal-overlay {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background: $gray;
-    z-index: 99;
-    display: none;
-    transition: display 1s;
-
-    .info & {
-        display: block;
-    }
-}
+// .modal-overlay {
+//     position: fixed;
+//     width: 100vw;
+//     height: 100vh;
+//     background: $gray;
+//     z-index: 99;
+//     display: none;
+//     transition: display 1s;
+//
+//     .info & {
+//         display: block;
+//     }
+// }
