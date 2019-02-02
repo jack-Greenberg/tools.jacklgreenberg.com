@@ -193,6 +193,7 @@ body {
 
             a {
                 text-decoration: none;
+                color: $light-gray;
 
                 &:visited {
                     color: $light-gray;
@@ -217,22 +218,23 @@ body {
             color: #ffffff;
         }
     }
+}
 
-    .info-close {
-        background-color: $beige;
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
-        box-shadow: 0 4px #888581;
-        margin: 0 auto;
+.info-close {
+    background-color: $beige;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    box-shadow: 0 4px #888581;
+    display: block;
+    margin: 2rem auto 0;
 
-        &:active {
-            box-shadow: none;
-        }
+    &:active {
+        box-shadow: none;
+    }
 
-        img {
-            width: 50%;
-        }
+    img {
+        width: 50%;
     }
 }
 
