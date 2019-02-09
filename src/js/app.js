@@ -34,7 +34,7 @@ export class Controls extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.state = {
-            wordCount: 3,
+            wordCount: 4,
             number: false,
             spchr: false,
             spaces: true,
