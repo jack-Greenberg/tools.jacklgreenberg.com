@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {bank} from './words.min.js';
+import { bank } from './words.min.js';
 const wordSource = bank.filter(word => word.length > 3 && word.length < 10);
 
 var Phrases = [];
@@ -13,9 +13,13 @@ export class Window extends React.Component {
         return (
             <div className="display-window">
                 <div className="display-window__nav">
-                    <svg className="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#d75745"></circle></svg>
-                    <svg className="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#f6d063"></circle></svg>
-                    <svg className="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#63c78e"></circle></svg>
+                    <div class="nav__circles">
+                        <svg className="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#d75745"></circle></svg>
+                        <svg className="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#f6d063"></circle></svg>
+                        <svg className="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#63c78e"></circle></svg>
+                    </div>
+                    <div class="nav__title"><h1>Passphrase Generator</h1></div>
+                    <div class="nav__clear"></div>
                 </div>
 
                 <div className="display-window__body">

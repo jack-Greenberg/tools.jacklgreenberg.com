@@ -14,14 +14,36 @@ body {
 
     &__nav {
         height: 1.3em;
-        padding-left: .4rem;
         background-color: $beige;
         border-radius: .5rem .5rem 0 0;
+        display: flex;
 
-        .circle {
-            margin-left: .4rem;
-            width: .8rem;
-            vertical-align: middle;
+        .nav__circles {
+            flex-grow: 1;
+            width: 25%;
+            padding-left: .4rem;
+
+            .circle {
+                margin-left: .4rem;
+                width: .8rem;
+                vertical-align: middle;
+            }
+        }
+        .nav__title {
+            flex-grow: 1;
+            text-align: center;
+            width: 50%;
+            height: 100%;
+
+            h1 {
+                font-family: $overpass;
+                font-size: .8rem;
+                display: inline;
+            }
+        }
+        .nav__clear {
+            flex-grow: 1;
+            width: 25%;
         }
     }
 
